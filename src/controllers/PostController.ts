@@ -5,20 +5,14 @@ import { PostSchema, PostSchemaPatch } from "../schemas/posts";
 import { PostDTO } from "../dtos/PostDTO";
 import { IPostService } from "interfaces/Post/IPostService";
 import { IPostController } from "@interfaces/Controller/IPostController";
+import { PostFactory } from "@utils/factory/posts/post-factory";
 
 class PostController implements IPostController {
-    constructor(private readonlypostService: IPostService) {};
+    constructor(private readonlypostService: IPostService) { };
 
     async createPost(req: Request, res: Response): Promise<Response> {
-        const body = req.body;
-        const validation = PostSchema.safeParse(body);
-
-        if (!validation.success) return res.status(400).json({
-            message: validation.error,
-        });
-
-        const postDTO = PostDTO.fromDTO(body);
-        const post = await postService.createPost(postDTO)
+        const createUserUseCase = PostFactory.createUserUseCase();
+        const post = await createUserUseCase.execute(req.body);
         return res.status(201).json(post);
     };
 
@@ -32,7 +26,7 @@ class PostController implements IPostController {
 
     async getPostById(req: Request, res: Response): Promise<Response> {
         const { id } = req.params;
-        
+
         if (!id) return res.status(400).json({ message: 'Invalid post id.' });
 
         const post = await postService.getPostById(Number(id));

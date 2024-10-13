@@ -1,7 +1,5 @@
 import { IAuthService } from "@interfaces/Authentication/IAuthService";
 import { IUserRepository } from "@interfaces/User/IUserRepository";
-import { User } from "@prisma/client";
-import UserRepository from "@repositories/UserRepository";
 import AppError from "@utils/appError";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';

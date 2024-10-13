@@ -11,15 +11,36 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "@utils/*": ["utils/*"],
-      "@controllers/*": ["controllers/*"],
-      "@repositories/*": ["repositories/*"],
-      "@services/*": ["services/*"],
-      "@interfaces/*": ["interfaces/*"],
-      "@dtos/*": ["dtos/*"],          // Adiciona mapeamento para a pasta dtos
-      "@schemas/*": ["schemas/*"]      // Adiciona mapeamento para a pasta schemas
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@controllers/*": [
+        "controllers/*"
+      ],
+      "@repositories/*": [
+        "repositories/*"
+      ],
+      "@services/*": [
+        "services/*"
+      ],
+      "@interfaces/*": [
+        "interfaces/*"
+      ],
+      "@dtos/*": [
+        "dtos/*"
+      ], // Adiciona mapeamento para a pasta dtos
+      "@schemas/*": [
+        "schemas/*"
+      ], // Adiciona mapeamento para a pasta schemas
+      "@application/*": [
+        "application/*"
+      ]
     }
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
